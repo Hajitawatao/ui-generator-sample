@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Button, TextField, Container, Box } from '@mui/material';
 
 function App() {
+  const [prompt, setPrompt] = useState('');
+  const [generatedCode, setGeneratedCode] = useState('');
+
+  const handleGenerate = async () => {
+    // Placeholder for AI API call
+    setGeneratedCode('<div>Sample generated UI</div>');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Box mt={4}>
+        <TextField
+          fullWidth
+          label="Describe your UI"
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+        />
+        <Button variant="contained" onClick={handleGenerate} sx={{ mt: 2 }}>
+          Generate UI
+        </Button>
+      </Box>
+      <Box mt={4}>
+        <h3>Generated JSX:</h3>
+        <pre>{generatedCode}</pre>
+      </Box>
+    </Container>
   );
 }
 
